@@ -1,0 +1,140 @@
+﻿@using MyBlog.Models.Siniflar
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Bloglar>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main id="main">
+
+    <!-- ======= Blog Section ======= -->
+    <section class="breadcrumbs" style="margin-bottom:-40px;margin-top:-80px;">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2><strong>Blog</strong></h2>
+
+                <ol>
+                    <li><a href="/Home/Index/">Anasayfa</a></li>
+                    <li>Blog</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Blog Section -->
+    <!-- ======= Blog Section ======= -->
+    <section id="blog" class="blog">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row">
+
+                <div class="col-lg-8 entries">
+
+                    @foreach (var i in Model)
+                    {
+                        <article class="entry">
+
+                            <div class="entry-img">
+                                <img src="@i.İmgBlog" alt="" class="img-fluid">
+                            </div>
+
+                            <h2 class="entry-title">
+                                <a href="blog-single.html">@i.Baslik</a>
+                            </h2>
+
+                            <div class="entry-meta">
+                                <ul>
+                                    <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">@i.YazarAdi</a></li>
+                                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">@i.Tarih.ToString("dd.MM.yyyy")</time></a></li>
+
+                                </ul>
+                            </div>
+
+                            <div class="entry-content">
+                                <p>
+                                    @i.Yazi.Substring(0, 100)
+                                </p>
+                                <div class="read-more">
+                                    <a href="/Blog/BlogDetay/@i.ID">Read More</a>
+                                </div>
+                            </div>
+
+                        </article>
+                    }
+
+                    <!-- End blog entry -->
+
+
+
+
+
+                </div><!-- End blog entries list -->
+                @Html.Action("AramaBari", "Blog")
+
+                @*<div class="col-lg-4">
+
+                        <div class="sidebar">
+
+                            <h3 class="sidebar-title">Search</h3>
+                            <div class="sidebar-item search-form">
+                                <form action="">
+                                    <input type="text">
+                                    <button type="submit"><i class="bi bi-search"></i></button>
+                                </form>
+                            </div><!-- End sidebar search formn-->
+
+
+                            <h3 class="sidebar-title">Recent Posts</h3>
+                            <div class="sidebar-item recent-posts">
+                                <div class="post-item clearfix">
+                                    <img src="~/Moderna/assets/img/blog/blog-recent-1.jpg" alt="">
+                                    <h4><a href="blog-single.html">Nihil blanditiis at in nihil autem</a></h4>
+                                    <time datetime="2020-01-01">Jan 1, 2020</time>
+                                </div>
+
+                                <div class="post-item clearfix">
+                                    <img src="~/Moderna/assets/img/blog/blog-recent-2.jpg" alt="">
+                                    <h4><a href="blog-single.html">Quidem autem et impedit</a></h4>
+                                    <time datetime="2020-01-01">Jan 1, 2020</time>
+                                </div>
+
+                                <div class="post-item clearfix">
+                                    <img src="~/Moderna/assets/img/blog/blog-recent-3.jpg" alt="">
+                                    <h4><a href="blog-single.html">Id quia et et ut maxime similique occaecati ut</a></h4>
+                                    <time datetime="2020-01-01">Jan 1, 2020</time>
+                                </div>
+
+                                <div class="post-item clearfix">
+                                    <img src="~/Moderna/assets/img/blog/blog-recent-4.jpg" alt="">
+                                    <h4><a href="blog-single.html">Laborum corporis quo dara net para</a></h4>
+                                    <time datetime="2020-01-01">Jan 1, 2020</time>
+                                </div>
+
+                                <div class="post-item clearfix">
+                                    <img src="~/Moderna/assets/img/blog/blog-recent-5.jpg" alt="">
+                                    <h4><a href="blog-single.html">Et dolores corrupti quae illo quod dolor</a></h4>
+                                    <time datetime="2020-01-01">Jan 1, 2020</time>
+                                </div>
+
+                            </div><!-- End sidebar recent posts-->
+
+
+
+                        </div><!-- End sidebar -->
+
+                    </div>*@<!-- End blog sidebar -->
+
+            </div>
+
+        </div>
+    </section><!-- End Blog Section -->
+
+</main>
+
+@Html.PagedListPager((IPagedList)Model,p=>Url.Action("Index",new {p }), new PagedListRenderOptions
+{
+    LiElementClasses=new List<string>
+    { "page-link"}
+})

@@ -1,0 +1,85 @@
+﻿@model MyBlog.Models.Siniflar.BlogYorum
+    @{
+        ViewBag.Title = "BlogDetay";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <section id="blog" class="blog">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row">
+                
+                <div class="col-lg-8 entries">
+
+                    <article class="entry entry-single">
+
+                        @foreach (var i in Model.BloglarT)
+                        {
+                            <h2 class="entry-title">
+                                <a href="blog-single.html">@i.Baslik</a>
+                            </h2>
+                            <div class="entry-meta">
+                                <ul>
+                                    <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">@i.YazarAdi</a></li>
+                                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">@i.Tarih.ToString("dd.MM.yyyy")</time></a></li>
+                                    <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">@ViewBag.Yorumsayisi</a></li>
+                                </ul>
+                            </div>
+                            <div class="entry-img">
+                                <img style="width:760px; margin-top:50px;" src="@i.İmgBlog" alt="" class="img-fluid">
+                            </div>
+
+
+
+                            <div class="entry-content">
+                                <p>@i.Yazi</p>
+
+
+                            </div>
+                            <div class="entry-img">
+                                <img style="width:760px; margin-top:50px;" src="@i.İmgBlog2" alt="" class="img-fluid">
+                            </div>
+                            <div class="entry-content">
+                                <p>@i.Yazi2</p>
+
+
+                            </div>
+                            <div class="entry-content">
+                                <p>Kaynak</p><a href="@i.Kaynak"> @i.Kaynak</a>
+
+
+                            </div>
+                        }
+
+
+
+
+                    </article>
+                    <!-- End blog entry -->
+                    <h4>@ViewBag.Yorumsayisi Yorum</h4>
+                    <hr />
+                    @foreach (var j in Model.YorumlarT)
+                    {
+                        <div id="comment-1" class="comment">
+                            <div class="d-flex">
+                                <div>
+                                    <h5><a href="">@j.KullaniciAdı</a></h5>
+                                    <a>@j.Tarih.ToString("dd.MM.yyyy")</a>
+                                    <p style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">@j.Yorum</p>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                    }
+
+
+                    @*-----------------------------------------------*@
+
+                    @Html.Action("Yorumlar", "Blog")
+
+                </div>
+                @Html.Action("AramaBari", "Blog")
+
+            </div>
+        </div>
+</section>

@@ -1,0 +1,84 @@
+﻿@model MyBlog.Models.Siniflar.YetenekHakkimizda
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main id="main">
+
+    <!-- ======= About Us Section ======= -->
+    <section class="breadcrumbs"style="margin-top:-80px;">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Hakkımızda</h2>
+                <ol>
+                    <li><a href="/Home/Index/">Anasayfa</a></li>
+                    <li>Hakkımızda</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End About Us Section -->
+    <!-- ======= About Section ======= -->
+    <section class="about" data-aos="fade-up"style="margin-top:-40px;">
+        <div class="container">
+           
+            @foreach (var i in Model.Hakkimizdas)
+            {
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img src="~/Moderna/assets/img/about.jpg" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0">
+                        <h3>@i.Baslik</h3>
+                        <p class="fst-italic">
+                            @i.Yazi
+                        </p>
+                        <ul>
+                            <li><i class="bi bi-check2-circle"></i>@i.p1 </li>
+                            <li><i class="bi bi-check2-circle"></i>@i.p2 </li>
+                            <li><i class="bi bi-check2-circle"></i>@i.p3</li>
+                        </ul>
+                        
+                    </div>
+                </div>
+
+            }
+
+
+        </div>
+    </section><!-- End About Section -->
+    <!-- ======= Facts Section ======= -->
+    <!-- End Facts Section -->
+    <!-- ======= Our Skills Section ======= -->
+    <section class="skills" data-aos="fade-up">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Yeteneklerim</h2>
+                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            </div>
+
+            <div class="skills-content">
+                @foreach (var j in Model.Yeteneks)
+                {
+                    <div class="progress">
+                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="@j.Yuzdesi" aria-valuemin="0" aria-valuemax="100">
+                            <span class="skill">@j.YetenekAdi <i class="val">@j.Yuzdesi%</i></span>
+                        </div>
+                    </div>
+                }
+
+
+               
+
+            </div>
+
+        </div>
+    </section><!-- End Our Skills Section -->
+    <!-- ======= Tetstimonials Section ======= -->
+    <!-- End Ttstimonials Section -->
+
+</main>
+

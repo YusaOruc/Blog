@@ -1,0 +1,27 @@
+﻿@model MyBlog.Models.Siniflar.Hakkimizda
+@{
+    ViewBag.Title = "HakkimizdaGsayfası";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<p style="margin-top:-20px;"><a href="/HakkimizdaAdmin/Index/">Hakkımızda</a> / Hakkımızda Güncelle</p>
+@using (Html.BeginForm("HakkimizdaGuncelle", "HakkimizdaAdmin", FormMethod.Post))
+{
+
+    @Html.LabelFor(x => x.ID)
+    @Html.TextBoxFor(x => x.ID, new { @class = "form-control", @readonly = "readonly" })
+    <br />
+    @Html.LabelFor(x => x.p1)
+    @Html.TextBoxFor(x => x.p1, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.p2)
+    @Html.TextBoxFor(x => x.p3, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.p2)
+    @Html.TextBoxFor(x => x.p3, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Yazi)
+    @Html.TextAreaFor(x => x.Yazi , 20 , 1, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">Güncelle</button>
+ }
+

@@ -1,0 +1,59 @@
+﻿@using MyBlog.Models.Siniflar
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Bloglar>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main id="main">
+    <section class="breadcrumbs" style="margin-top:-80px;margin-bottom:-60px;">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2><strong>Yazılım</strong></h2>
+                <ol>
+                    <li><a href="/Home/Index/">Anasayfa</a></li>
+                    <li>Yazılım</li>
+                </ol>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<section class="service-details">
+    <div class="container">
+
+        <div class="row">
+            @foreach (var i in Model)
+            {
+                <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+                    <div class="card">
+                        <div class="card-img">
+                            <img style="height:350px;width:600px;" src="@i.İmgBlog" alt="...">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="/Blog/BlogDetay/@i.ID">@i.Baslik</a></h5>
+                            <p class="card-text"> @i.Yazi.Substring(0, 100)...</p>
+                            <div class="read-more"><a href="/Blog/BlogDetay/@i.ID"><i class="bi bi-arrow-right"></i> Read More</a></div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+
+    </div>
+</section>
+@Html.PagedListPager((IPagedList)Model,p=>Url.Action("Index",new {p }), new PagedListRenderOptions
+{
+    LiElementClasses=new List<string>
+    { "page-link"}
+})
+

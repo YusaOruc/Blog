@@ -1,0 +1,22 @@
+﻿@model MyBlog.Models.Siniflar.Yetenek
+@{
+    ViewBag.Title = "YetenekGsayfası";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<p style="margin-top:-20px;"><a href="/YeteneklerimAdmin/Index/">Yeteneklerim</a> / Yetenek Güncelle</p>
+
+@using (Html.BeginForm("YetenekGuncelle", "YeteneklerimAdmin", FormMethod.Post))
+{
+    @Html.LabelFor(x => x.ID)
+    @Html.TextBoxFor(x => x.ID, new { @class = "form-control", @readonly = "readonly" })
+    <br />
+    @Html.LabelFor(x => x.YetenekAdi)
+    @Html.TextBoxFor(x => x.YetenekAdi, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Yuzdesi)
+    @Html.TextBoxFor(x => x.Yuzdesi, new { @class = "form-control" })
+    <br />
+   
+    <button class="btn btn-primary">Güncelle</button>
+}

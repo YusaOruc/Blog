@@ -1,0 +1,64 @@
+﻿@using MyBlog.Models.Siniflar
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Yetenek>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h4 style="margin-top:-20px;">Yeteneklerim</h4>
+@using (Html.BeginForm("Index", "YeteneklerimAdmin", FormMethod.Get))
+{
+    <div>
+        <div class="form-group">
+            <div style="width:25%;float:left;">
+                @Html.TextBox("ara", null, new { @class = "form-control", @placeholder = "Kullanıcı Adı" })
+
+            </div>
+            <div style="float:left;margin-top:-9px;">
+                <input type="submit" name="btn" value="Ara" class="btn btn-info" />
+            </div>
+
+        </div>
+    </div>
+}
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <td>ID</td>
+            <td>Yetenek Adı</td>
+            <td>Yüzdesi</td>
+
+
+            <td>Sil</td>
+            <td>Güncelle</td>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>@i.ID</td>
+                <td>@i.YetenekAdi</td>
+                <td>@i.Yuzdesi</td>
+
+
+                <td><a href="/YeteneklerimAdmin/YetenekSil/@i.ID" class="btn btn-danger">SİL</a></td>
+                <td><a href="/YeteneklerimAdmin/YetenekGsayfası/@i.ID" class="btn btn-warning">Güncelle</a></td>
+
+            </tr>
+
+        }
+
+
+
+    </tbody>
+</table>
+<td><a href="/YeteneklerimAdmin/YetenekGetir/" class="btn btn-primary">EKLE</a></td>
+@Html.PagedListPager((IPagedList)Model,p=>Url.Action("Index",new {p }), new PagedListRenderOptions
+{
+    LiElementClasses=new List<string>
+    { "page-link"}
+})

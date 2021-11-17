@@ -1,0 +1,62 @@
+﻿@using MyBlog.Models.Siniflar
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Cinema>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main id="main">
+
+    <!-- ======= Our Portfolio Section ======= -->
+    <section class="breadcrumbs" style="margin-bottom:-60px;margin-top:-80px;">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 style="color:#1e4356"><strong>Dizi Önerileri</strong></h2>
+                <ol><li style="color:#1e4356"><a href="/Dizi/Index/">All</a> | <a href="/Dizi/Kategori/2">Drama</a> | <a href="/Dizi/Kategori/3">Aksiyon</a> | <a href="/Dizi/Kategori/4">Macera</a> | <a href="/Dizi/Kategori/5">Korku</a> | <a href="/Dizi/Kategori/6">Komedi</a> </li></ol>
+                <ol>
+                    <li><a href="/Home/Index/">Anasayfa</a></li>
+                    <li>Dizi</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Our Portfolio Section -->
+</main>
+
+<section class="portfolio">
+    <div class="col-12">
+        <div class="container">
+
+            <div class="row portfolio-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+
+                @foreach (var i in Model)
+                {
+                    <div class="col-lg-4 col-md-6 portfolio-wrap filter-app">
+                        <div class="portfolio-item">
+                            <a href="/Dizi/DiziDetay/@i.ID"><img src="@i.İmgCinema" class="img-fluid" alt="" style="width:350px;height:470px;"></a>
+                            <div class="portfolio-info">
+                                <h2><a href="/Dizi/DiziDetay/@i.ID"><i class="bx bx-link"></i></a></h2>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</section>
+@Html.PagedListPager((IPagedList)Model,p=>Url.Action("Index",new {p }), new PagedListRenderOptions
+{
+    LiElementClasses=new List<string>
+    { "page-link"}
+})
+

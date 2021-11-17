@@ -1,0 +1,44 @@
+﻿@using MyBlog.Models.Siniflar
+@model List<Bloglar>
+
+<div class="col-lg-4">
+
+    <div class="sidebar">
+
+        <h3 class="sidebar-title">Search</h3>
+        <div class="sidebar-item search-form">
+            <form action="">
+                <input type="text">
+                <button type="submit"><i class="bi bi-search"></i></button>
+            </form>
+        </div><!-- End sidebar search formn-->
+
+
+        <h3 class="sidebar-title">Son Yazılar</h3>
+        <div class="sidebar-item recent-posts">
+            @foreach (var i in Model)
+            {
+                <div class="post-item clearfix">
+                    <img src="@i.İmgBlog" alt="">
+                    <h4><a href="/Blog/BlogDetay/@i.ID">@i.Baslik</a></h4>
+                    <time datetime="2020-01-01">@i.Tarih.ToString("dd.MM.yyyy")</time>
+                </div>
+            }
+
+
+
+
+
+
+
+
+
+
+
+        </div><!-- End sidebar recent posts-->
+
+
+
+    </div><!-- End sidebar -->
+
+</div>

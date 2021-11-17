@@ -1,0 +1,89 @@
+﻿@using MyBlog.Models.Siniflar
+@model List<Cinema>
+@{
+    ViewBag.Title = "FilmDetay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <!-- End Header -->
+
+    <main id="main">
+
+        <!-- ======= Our Portfolio Section ======= -->
+        <section class="breadcrumbs" style="margin-bottom:-40px;margin-top:-80px;">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>Film Detay</h2>
+                    <ol>
+                        <li><a href="/Home/Index/">Anasayfa</a></li>
+                        <li><a href="/Film/Index/">Film</a></li>
+                        <li>Film Detay</li>
+                    </ol>
+                </div>
+
+            </div>
+        </section><!-- End Our Portfolio Section -->
+        <!-- ======= Portfolio Details Section ======= -->
+        <section id="portfolio-details" class="portfolio-details">
+            <div class="container">
+
+                <div class="row gy-4">
+                    @foreach (var i in Model)
+                    {
+                        <div class="col-lg-5">
+                            <div class="portfolio-details-slider swiper-container">
+                                <div class="swiper-wrapper align-items-center">
+
+                                    <div class="swiper-slide">
+                                        <img style="width:420px;height:610px;" src="@i.İmgCinema" alt="">
+                                    </div>
+
+                                    <div class="swiper-slide">
+                                        <img style="width:420px;height:610px;" src="@i.İmgCinema2" alt="">
+                                    </div>
+
+                                    @*<div class="swiper-slide">
+                                        <img style="width:600px;height:870px;" src="@i.İmgCinema3" alt="">
+                                    </div>*@
+
+                                </div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-7">
+                            <div class="portfolio-info">
+                                <h3>Film Detay</h3>
+                                <ul>
+                                    <li><strong>Kategori</strong>: @i.FilmKategori</li>
+                                    <li><strong>Yönetmen</strong>: @i.Yonetmen</li>
+                                    <li><strong>Çıkış Tarihi</strong>: @i.FilmCikisTarihi.ToString("dd.MM.yyyy")</li>
+                                    <li><strong>Filmi Öneren Yazarımız</strong>: <a href="#">@i.FilmiOneren</a></li>
+                                </ul>
+                            </div>
+                            <div class="portfolio-description">
+                                <h2>Film Konusu</h2>
+                                <p>
+                                    @i.FilmHakkinda
+                                </p>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+
+            </div>
+        </section><!-- End Portfolio Details Section -->
+
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <!-- End Footer -->
+
+
+</body>
+

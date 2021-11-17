@@ -1,0 +1,59 @@
+﻿@using MyBlog.Models.Siniflar
+@model List<Bloglar>
+<section class="features">
+    
+    <div class="container" >
+        
+        <div class="section-title"style="margin-bottom:-68px;margin-top:-30px;">
+            <h2>Son Yazılar</h2>
+        </div>
+        <hr />
+        @foreach (var i in Model)
+        {
+            if (i.ID % 2 == 0)
+            {
+                <div class="row" data-aos="fade-up">
+                    <div class="col-md-5">
+                        <img src="@i.İmgBlog" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-md-7 pt-4">
+                        <h3>@i.Baslik</h3>
+                        <p class="fst-italic">
+                            @i.Yazi.Substring(0, 100)...
+                        </p>
+                        <a href="/Blog/BlogDetay/@i.ID" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="row" data-aos="fade-up">
+                    <div class="col-md-5 order-1 order-md-2">
+                        <img src="@i.İmgBlog" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-md-7 pt-5 order-2 order-md-1">
+                        <h3>@i.Baslik</h3>
+                        <p class="fst-italic">
+                            @i.Yazi.Substring(0, 100)...
+                        </p>
+                        <a href="/Blog/BlogDetay/@i.ID" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+
+                    </div>
+                </div>
+            }
+
+        }
+
+
+
+
+
+
+        <hr />
+
+    </div>
+    
+</section>
+
+

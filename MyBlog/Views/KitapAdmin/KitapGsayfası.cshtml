@@ -1,0 +1,35 @@
+﻿@model MyBlog.Models.Siniflar.Kitap
+@{
+    ViewBag.Title = "KitapGsayfası";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<p style="margin-top:-20px;"><a href="/KitapAdmin/Index/">Kitaplar</a> / Kitap Güncelle</p>
+
+@using (Html.BeginForm("KitapGuncelle", "KitapAdmin", FormMethod.Post))
+{
+    @Html.LabelFor(x => x.ID)
+    @Html.TextBoxFor(x => x.ID, new { @class = "form-control", @readonly = "readonly" })
+    <br />
+    @Html.LabelFor(x => x.KitapAdi)
+    @Html.TextBoxFor(x => x.KitapAdi, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Yazari)
+    @Html.TextBoxFor(x => x.Yazari, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.İmgKitap)
+    @Html.TextBoxFor(x => x.İmgKitap, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.KitapOneren)
+    @Html.TextBoxFor(x => x.KitapOneren, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.KitapCikisTarihi)
+    @Html.TextBoxFor(x => x.KitapCikisTarihi, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.KitapHakkinda)
+    @Html.TextAreaFor(x => x.KitapHakkinda, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-primary">Güncelle</button>
+}
+

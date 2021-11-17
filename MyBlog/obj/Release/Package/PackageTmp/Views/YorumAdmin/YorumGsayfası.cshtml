@@ -1,0 +1,28 @@
+﻿@model MyBlog.Models.Siniflar.Yorumlar
+@{
+    ViewBag.Title = "YorumGsayfası";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<p style="margin-top:-20px;"><a href="/YorumAdmin/Index/">Yorumlar</a> / Yorumları Güncelle</p>
+
+@using (Html.BeginForm("YorumGuncelle", "YorumAdmin", FormMethod.Post))
+{
+    @Html.LabelFor(x => x.ID)
+    @Html.TextBoxFor(x => x.ID, new { @class = "form-control", @readonly = "readonly" })
+    <br />
+    @Html.LabelFor(x => x.KullaniciAdı)
+    @Html.TextBoxFor(x => x.KullaniciAdı , new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Mail)
+    @Html.TextBoxFor(x => x.Mail , new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Yorum)
+    @Html.TextBoxFor(x => x.Yorum, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Tarih)
+    @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-primary">Güncelle</button>
+}

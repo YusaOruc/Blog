@@ -1,0 +1,44 @@
+﻿@model MyBlog.Models.Siniflar.Cinema
+@{
+    ViewBag.Title = "SinemaGsayfası";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<p style="margin-top:-20px;"><a href="/SinemaAdmin/Index/">Sinemalar</a> / Sinema Güncelle</p>
+
+@using (Html.BeginForm("SinemaGuncelle", "SinemaAdmin", FormMethod.Post))
+{
+    @Html.LabelFor(x => x.ID)
+    @Html.TextBoxFor(x => x.ID, new { @class = "form-control", @readonly = "readonly" })
+    <br />
+    @Html.LabelFor(x => x.FilmAdi)
+    @Html.TextBoxFor(x => x.FilmAdi, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Yonetmen)
+    @Html.TextBoxFor(x => x.Yonetmen, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.İmgCinema)
+    @Html.TextBoxFor(x => x.İmgCinema, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.İmgCinema2)
+    @Html.TextBoxFor(x => x.İmgCinema2, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.FilmiOneren)
+    @Html.TextAreaFor(x => x.FilmiOneren, 15, 1, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.FilmCikisTarihi)
+    @Html.TextBoxFor(x => x.FilmCikisTarihi, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.FilmHakkinda)
+    @Html.TextBoxFor(x => x.FilmHakkinda, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.FilmKategori)
+    @Html.TextBoxFor(x => x.FilmKategori, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.DiziorFilm)
+    @Html.TextBoxFor(x => x.DiziorFilm, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-primary">Güncelle</button>
+}
+

@@ -1,0 +1,44 @@
+﻿@model MyBlog.Models.Siniflar.Bloglar
+@{
+    ViewBag.Title = "BlogrGsayfası";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<p style="margin-top:-20px;"><a href="/BlogAdmin/Index/">Bloglar</a> / Blog Güncelle</p>
+
+@using (Html.BeginForm("BlogGuncelle", "BlogAdmin", FormMethod.Post))
+{
+    @Html.LabelFor(x => x.ID)
+    @Html.TextBoxFor(x => x.ID, new { @class = "form-control", @readonly = "readonly" })
+    <br />
+    @Html.LabelFor(x => x.Baslik)
+    @Html.TextBoxFor(x => x.Baslik, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.İmgBlog)
+    @Html.TextBoxFor(x => x.İmgBlog, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.İmgBlog2)
+    @Html.TextBoxFor(x => x.İmgBlog2, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Yazi)
+    @Html.TextAreaFor(x => x.Yazi, 15, 1, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Yazi2)
+    @Html.TextAreaFor(x => x.Yazi2, 15, 1, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.YazarAdi)
+    @Html.TextBoxFor(x => x.YazarAdi, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Tarih)
+    @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.BlogKategori)
+    @Html.TextBoxFor(x => x.BlogKategori, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Kaynak)
+    @Html.TextBoxFor(x => x.Kaynak, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-primary">Güncelle</button>
+}
+

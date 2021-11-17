@@ -1,0 +1,75 @@
+﻿@using MyBlog.Models.Siniflar
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Cinema>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h4 style="margin-top:-20px;">Sinema</h4>
+
+@using (Html.BeginForm("Index", "SinemaAdmin", FormMethod.Get))
+{
+    <div>
+        <div class="form-group">
+            <div style="width:25%;float:left;">
+                @Html.TextBox("ara", null, new { @class = "form-control", @placeholder = "Sinema Adı" })
+
+            </div>
+            <div style="float:left;margin-top:-9px;">
+                <input type="submit" name="btn" value="Ara" class="btn btn-info" />
+            </div>
+
+        </div>
+    </div>
+}
+
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <td>ID</td>
+            <td>Film Adı</td>
+            <td>Yönetmen</td>
+            
+            <td>Filmi Öneren</td>
+            <td>Çıkış Tarihi</td>
+           
+            <td>Kategori</td>
+            <td>Dizi/Film</td>
+            <td>Sil</td>
+            <td>Güncelle</td>
+
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>@i.ID</td>
+                <td>@i.FilmAdi.Substring(0, 5) ...</td>
+                <td>@i.Yonetmen</td>
+                
+                <td>@i.FilmiOneren</td>
+                <td>@i.FilmCikisTarihi.ToString("dd.MM.yyyy")</td>
+                
+                <td>@i.FilmKategori</td>
+                <td>@i.DiziorFilm</td>
+                <td><a href="/SinemaAdmin/SinemaSil/@i.ID" class="btn btn-danger">SİL</a></td>
+                <td><a href="/SinemaAdmin/SinemaGsayfası/@i.ID" class="btn btn-warning">Güncelle</a></td>
+
+            </tr>
+
+        }
+
+
+
+    </tbody>
+</table>
+<td><a href="/SinemaAdmin/SinemaGetir/" class="btn btn-primary">EKLE</a></td>
+
+@Html.PagedListPager((IPagedList)Model,p=>Url.Action("Index",new {p }), new PagedListRenderOptions
+{
+    LiElementClasses=new List<string>
+    { "page-link"}
+})

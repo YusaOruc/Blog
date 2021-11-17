@@ -1,0 +1,44 @@
+﻿
+
+<div class="blog-comments">
+
+   
+    @*-------------------------------------------------------------------------------------------*@
+    <div class="reply-form">
+        <h4>Yorum yaz</h4>
+        <p>Your email address will not be published. Required fields are marked * </p>
+        <form action="" method="post">
+            <div class="row">
+
+                <div class="col-md-6 form-group">
+                    <input name="KullaniciAdı" type="text" class="form-control" placeholder="Your Name*">
+                </div>
+                <div class="col-md-6 form-group">
+                    <input name="Mail" type="text" class="form-control" placeholder="Your Email*">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col form-group">
+                    <textarea name="Yorum" class="form-control" placeholder="Your Comment*"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col form-group">
+                    <textarea hidden name="Tarih" class="form-control" placeholder="Your Comment*">@DateTime.Today.ToString("dd.MM.yyyy")</textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <input name="Blogid" type="hidden" value="@ViewBag.ID" class="form-control" placeholder="Your Name*">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Paylaş</button>
+
+        </form>
+
+    </div>
+</div>
+
+
+    

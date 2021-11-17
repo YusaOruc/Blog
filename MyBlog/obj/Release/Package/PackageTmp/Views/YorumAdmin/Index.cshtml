@@ -1,0 +1,66 @@
+﻿@using MyBlog.Models.Siniflar
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Yorumlar>
+@{
+    ViewBag.Title = "Yorum";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h4 style="margin-top:-20px;">Yorumlar</h4>
+@using (Html.BeginForm("Index", "YorumAdmin", FormMethod.Get))
+{
+    <div>
+        <div class="form-group">
+            <div style="width:25%;float:left;">
+                @Html.TextBox("ara", null, new { @class = "form-control", @placeholder = "Kullanıcı Adı" })
+
+            </div>
+            <div style="float:left;margin-top:-9px;">
+                <input type="submit" name="btn" value="Ara" class="btn btn-info" />
+            </div>
+
+        </div>
+    </div>
+}
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <td>ID</td>
+            <td>KUllanıcı Adı</td>
+            <td>Mail</td>
+            <td>Yorum</td>
+            <td>Tarih</td>
+            <td>Blogid</td>
+            <td>Sil</td>
+            <td>Güncelle</td>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>@i.ID</td>
+                <td>@i.KullaniciAdı</td>
+                <td>@i.Mail</td>
+                <td>@i.Yorum.Substring(0, 1) ...</td>
+                <td>@i.Tarih.ToString("dd.MM.yyyy")</td>
+                <td>@i.Blogid</td>
+                <td><a href="/YorumAdmin/YorumSil/@i.ID" class="btn btn-danger">SİL</a></td>
+                <td><a href="/YorumAdmin/YorumGsayfası/@i.ID" class="btn btn-warning">Güncelle</a></td>
+
+            </tr>
+
+        }
+
+
+
+    </tbody>
+</table>
+
+@Html.PagedListPager((IPagedList)Model,p=>Url.Action("Index",new {p }), new PagedListRenderOptions
+{
+    LiElementClasses=new List<string>
+    { "page-link"}
+})

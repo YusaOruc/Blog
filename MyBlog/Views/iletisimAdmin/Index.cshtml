@@ -1,0 +1,44 @@
+﻿@using MyBlog.Models.Siniflar
+@model List<iletisim>
+@{
+    ViewBag.Title = "iletisim";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h4 style="margin-top:-20px;">İletişim</h4>
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <td>ID</td>
+            <td>Adres</td>
+            <td>Mail</td>
+            <td>Telefon</td>
+            <td>Konum Link</td>
+
+            <td>Sil</td>
+            <td>Güncelle</td>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>@i.ID</td>
+                <td>@i.Adres.Substring(0, 10) ...</td>
+                <td>@i.Mail</td>
+                <td>@i.Telefon</td>
+                <td>@i.mapLink.Substring(0, 10) ...</td>
+
+                <td><a href="/iletisimAdmin/iletisimSil/@i.ID" class="btn btn-danger">SİL</a></td>
+                <td><a href="/iletisimAdmin/iletisimGsayfası/@i.ID" class="btn btn-warning">Güncelle</a></td>
+
+            </tr>
+
+        }
+
+
+
+    </tbody>
+</table>
+<td><a href="/iletisimAdmin/iletisimGetir/" class="btn btn-primary">EKLE</a></td>
+

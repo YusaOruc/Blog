@@ -1,0 +1,48 @@
+﻿@using MyBlog.Models.Siniflar
+@model List<Hakkimizda>
+@{
+    ViewBag.Title = "Hakkimizda";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h4 style="margin-top:-20px;">Hakkımızda</h4>
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <td>ID</td>
+            <td>Başlık</td>
+            <td>Yazı</td>
+            <td>P-1</td>
+            <td>P-2</td>
+            <td>P-3</td>
+            <td>Sil</td>
+            <td>Güncelle</td>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>@i.ID</td>
+                <td>@i.Baslik.Substring(0,5) ...</td>
+                <td>@i.Yazi.Substring(0,10) ...</td>
+                <td>@i.p1.Substring(0,10) ...</td>
+                <td>@i.p2.Substring(0,10) ...</td>
+                <td>@i.p3.Substring(0,10) ...</td>
+
+
+                <td><a href="/HakkimizdaAdmin/HakkimizdaSil/@i.ID" class="btn btn-danger">SİL</a></td>
+                <td><a href="/HakkimizdaAdmin/HakkimizdaGsayfası/@i.ID" class="btn btn-warning">Güncelle</a></td>
+
+            </tr>
+
+
+        }
+
+
+
+    </tbody>
+</table>
+<td><a href="/HakkimizdaAdmin/HakkimizdaGetir/" class="btn btn-primary">EKLE</a></td>
+
+

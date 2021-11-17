@@ -1,0 +1,29 @@
+﻿@model MyBlog.Models.Siniflar.Yazar
+@{
+    ViewBag.Title = "YazarGsayfası";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<p style="margin-top:-20px;"><a href="/YazarAdmin/Index/">Yazarlar</a> / Yazar Güncelle</p>
+
+@using (Html.BeginForm("YazarGuncelle", "YazarAdmin", FormMethod.Post))
+{
+    @Html.LabelFor(x => x.ID)
+    @Html.TextBoxFor(x => x.ID, new { @class = "form-control", @readonly = "readonly" })
+    <br />
+    @Html.LabelFor(x => x.AdiSoyadi)
+    @Html.TextBoxFor(x => x.AdiSoyadi, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Meslegi)
+    @Html.TextBoxFor(x => x.Meslegi, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Mail)
+    @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Hakkinda)
+    @Html.TextBoxFor(x => x.Hakkinda, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-primary">Güncelle</button>
+}
+

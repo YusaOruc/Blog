@@ -1,0 +1,73 @@
+﻿@using MyBlog.Models.Siniflar
+@model List<Yazar>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<main id="main">
+
+    <!-- ======= Our Team Section ======= -->
+    <section class="breadcrumbs"style="margin-top:-80px;">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Our Team</h2>
+                <ol>
+                    <li><a href="/Home/Index/">Anasayfa</a></li>
+                    <li>Team</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Our Team Section -->
+    <!-- ======= Team Section ======= -->
+    <section class="team" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+        <div class="container">
+
+            <div class="row">
+
+                @foreach (var i in Model)
+                {
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                        <div class="member">
+                            <div class="member-img">
+                                <img src="~/Moderna/assets/img/team/team-1.jpg" class="img-fluid" alt="">
+                                <div class="social">
+                                    <a href=""><i class="bi bi-twitter"></i></a>
+                                    <a href=""><i class="bi bi-facebook"></i></a>
+                                    <a href=""><i class="bi bi-instagram"></i></a>
+                                    <a href=""><i class="bi bi-linkedin"></i></a>
+                                    <a href=""><i class="bi bi-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h4>@i.AdiSoyadi</h4>
+                                <span>@i.Meslegi</span>
+                                <p>@i.Hakkinda</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+    </section><!-- End Team Section -->
+
+</main>
+

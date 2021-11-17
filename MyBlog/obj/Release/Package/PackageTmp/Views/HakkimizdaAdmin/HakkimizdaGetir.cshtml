@@ -1,0 +1,29 @@
+﻿@model MyBlog.Models.Siniflar.Hakkimizda
+@{
+    ViewBag.Title = "HakkimizdaGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<p style="margin-top:-20px;"><a href="/HakkimizdaAdmin/Index/">Hakkımızda</a> / Hakkımızda Ekle</p>
+<form class="form-group" method="post">
+
+    @Html.LabelFor(x => x.Baslik)
+    @Html.TextBoxFor(x => x.Baslik, new { @class = "form-control" })
+    <br />
+
+
+    @Html.LabelFor(x => x.p1)
+    @Html.TextBoxFor(x => x.p1, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.p2)
+    @Html.TextBoxFor(x => x.p2, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.p3)
+    @Html.TextBoxFor(x => x.p3, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Yazi)
+    @Html.TextAreaFor(x => x.Yazi,2,1, new { @class = "form-control" })
+    
+    <button class="btn btn-primary">Ekle</button>
+</form>
+

@@ -1,0 +1,39 @@
+﻿
+
+
+.deneme {
+    display: flex;
+    margin-top: 50px;
+}
+
+.itemler {
+    position: relative;
+    display: block;
+    flex: 1 1 0px;
+    transition: transform 500ms;
+}
+
+.deneme:focus-within .item,
+.deneme:hover .item {
+    transform: translateX(-25%);
+}
+
+.itemler:focus ~ .item,
+.itemler:hover ~ .item {
+    transform: translateX(25%);
+}
+
+.deneme .item:focus,
+.deneme .item:hover {
+    transform: scale(1.5);
+    z-index: 1;
+}
+
+.badi {
+    overflow: hidden;
+}
+
+.itemler img {
+    display: block;
+    max-width: 100%;
+}

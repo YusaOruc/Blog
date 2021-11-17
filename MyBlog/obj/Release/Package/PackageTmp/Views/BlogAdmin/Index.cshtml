@@ -1,0 +1,72 @@
+﻿@using MyBlog.Models.Siniflar
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Bloglar>
+@{
+    ViewBag.Title = "Blog";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h4 style="margin-top:-20px;">Blog</h4>
+
+@using (Html.BeginForm("Index", "BlogAdmin", FormMethod.Get))
+{
+    <div>
+        <div class="form-group">
+            <div style="width:25%;float:left;">
+                @Html.TextBox("ara",null,new { @class = "form-control", @placeholder = "Başlık Adı,Yazar Adı" })
+
+            </div>
+            <div style="float:left;margin-top:-9px;">
+                <input type="submit"name="btn"value="Ara"class="btn btn-info" />
+            </div>
+
+        </div>
+    </div>
+}
+
+
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <td>ID</td>
+            <td>Başlık</td>
+            
+            <td>Yazar Adı</td>
+            <td>Tarih</td>
+            <td>Kategori</td>
+            <td>Kaynak</td>
+            <td>Sil</td>
+            <td>Güncelle</td>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>@i.ID</td>
+                <td>@i.Baslik.Substring(0, 7) ...</td>
+               
+                <td>@i.YazarAdi</td>
+                <td>@i.Tarih.ToString("dd.MM.yyyy")</td>
+                <td>@i.BlogKategori</td>
+                <td>@i.Kaynak.Substring(0, 10) ...</td>
+                <td><a href="/BlogAdmin/BlogSil/@i.ID" class="btn btn-danger">SİL</a></td>
+                <td><a href="/BlogAdmin/BlogrGsayfası/@i.ID" class="btn btn-warning">Güncelle</a></td>
+
+            </tr>
+
+
+            }
+
+
+
+    </tbody>
+</table>
+<td><a href="/BlogAdmin/BlogGetir/" class="btn btn-primary">EKLE</a></td>
+
+@Html.PagedListPager((IPagedList)Model,p=>Url.Action("Index",new {p }), new PagedListRenderOptions
+{
+    LiElementClasses=new List<string>
+    { "page-link"}
+})

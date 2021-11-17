@@ -1,0 +1,70 @@
+﻿@using MyBlog.Models.Siniflar
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Kitap>
+@{
+    ViewBag.Title = "Kitap";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h4 style="margin-top:-20px;">Kitap</h4>
+
+@using (Html.BeginForm("Index", "KitapAdmin", FormMethod.Get))
+{
+    <div>
+        <div class="form-group">
+            <div style="width:25%;float:left;">
+                @Html.TextBox("ara", null, new { @class = "form-control", @placeholder = "Kitap Adı" })
+
+            </div>
+            <div style="float:left;margin-top:-9px;">
+                <input type="submit" name="btn" value="Ara" class="btn btn-info" />
+            </div>
+
+        </div>
+    </div>
+}
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <td>ID</td>
+            <td>Kitap Adı</td>
+            <td>Yazarı</td>
+            
+            <td>Kitap Öneren</td>
+            <td>Çıkış Tarihi</td>
+           
+            <td>Sil</td>
+            <td>Güncelle</td>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>@i.ID</td>
+                <td>@i.KitapAdi</td>
+                <td>@i.Yazari</td>
+                
+                <td>@i.KitapOneren</td>
+                <td>@i.KitapCikisTarihi.ToString("dd.MM.yyyy")</td>
+                
+                <td><a href="/KitapAdmin/KitapSil/@i.ID" class="btn btn-danger">SİL</a></td>
+                <td><a href="/KitapAdmin/KitapGsayfası/@i.ID" class="btn btn-warning">Güncelle</a></td>
+
+            </tr>
+
+        }
+
+
+
+    </tbody>
+</table>
+<td><a href="/KitapAdmin/KitapGetir/" class="btn btn-primary">EKLE</a></td>
+
+@Html.PagedListPager((IPagedList)Model,p=>Url.Action("Index",new {p }), new PagedListRenderOptions
+{
+    LiElementClasses=new List<string>
+    { "page-link"}
+})

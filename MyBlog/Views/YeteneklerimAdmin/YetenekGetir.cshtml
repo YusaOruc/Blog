@@ -1,0 +1,19 @@
+﻿@model MyBlog.Models.Siniflar.Yetenek
+@{
+    ViewBag.Title = "YetenekGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<p style="margin-top:-20px;"><a href="/YeteneklerimAdmin/Index/">Yeteneklerim</a> / Yetenek Ekle</p>
+
+<form class="form-group" method="post">
+
+    @Html.LabelFor(x => x.YetenekAdi)
+    @Html.TextBoxFor(x => x.YetenekAdi, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Yuzdesi)
+    @Html.TextBoxFor(x => x.Yuzdesi, new { @class = "form-control" })
+    <br />
+    
+    <button class="btn btn-primary">Ekle</button>
+</form>

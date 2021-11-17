@@ -1,0 +1,83 @@
+﻿@using MyBlog.Models.Siniflar
+@model List<Kitap>
+@{
+    ViewBag.Title = "KitapDetay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <!-- End Header -->
+
+    <main id="main">
+
+        <!-- ======= Our Portfolio Section ======= -->
+        <section class="breadcrumbs" style="margin-bottom:-40px;margin-top:-80px;">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>Kitap Detay</h2>
+                    <ol>
+                        <li><a href="/Home/Index/">Anasayfa</a></li>
+                        <li><a href="/Kitap/Index/">Kitap</a></li>
+                        <li>Kitap Detay</li>
+                    </ol>
+                </div>
+
+            </div>
+        </section><!-- End Our Portfolio Section -->
+        <!-- ======= Portfolio Details Section ======= -->
+        <section id="portfolio-details" class="portfolio-details">
+            <div class="container">
+
+                <div class="row gy-4">
+                    @foreach (var i in Model)
+                    {
+                        <div class="col-lg-5">
+                            <div class="portfolio-details-slider swiper-container">
+                                <div class="swiper-wrapper align-items-center">
+
+                                    <div class="swiper-slide">
+                                        <img style="width:400px;height:610px;" src="@i.İmgKitap" alt="">
+                                    </div>
+
+
+                                </div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-7">
+                            <div class="portfolio-info">
+                                <h3>Kitap Detay</h3>
+                                <ul>
+                                    <li><strong>@i.KitapAdi</strong> </li>
+                                    <li><strong>Yazar</strong>: @i.Yazari</li>
+                                    <li><strong>Çıkış Tarihi</strong>: @i.KitapCikisTarihi.ToString("dd.MM.yyyy")</li>
+                                    <li><strong>Filmi Öneren Yazarımız</strong>: <a href="#">@i.KitapOneren</a></li>
+                                </ul>
+                            </div>
+                            <div class="portfolio-description">
+                                <h2>Kitap Konusu</h2>
+                                <p>
+                                    @i.KitapHakkinda
+                                </p>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+
+            </div>
+        </section><!-- End Portfolio Details Section -->
+
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <!-- End Footer -->
+
+
+</body>
+

@@ -1,0 +1,45 @@
+﻿@using MyBlog.Models.Siniflar
+@model List<Kitap>
+<section class="portfolio">
+    <div class="container">
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+            @foreach (var i in Model)
+            {
+                <div class="col-lg-3 col-md-6 portfolio-wrap filter-app">
+                    <div class="portfolio-item">
+                        <a href="/Kitap/KitapDetay/@i.ID"><img src="@i.İmgKitap" class="img-fluid" alt=""style="width:270px; height:400px;"></a>
+                        <div class="portfolio-info">
+                            
+                            <div>
+                               <a href="/Kitap/KitapDetay/@i.ID" title="Portfolio Details"><i class="bx bx-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+
+        </div>
+
+    </div>
+</section>
+
+<main id="main">
+
+    <!-- ======= Our Portfolio Section ======= -->
+    <section class="breadcrumbs" style="margin-bottom:20px;margin-top:-180px;background:#d2e4ed;">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2><strong>Kitap Önerileri</strong></h2>
+                <ol>
+                    <li><a href="/Kitap/Index/">All see</a></li>
+
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Our Portfolio Section -->
+</main>

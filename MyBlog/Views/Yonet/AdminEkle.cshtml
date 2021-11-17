@@ -1,0 +1,18 @@
+﻿@model MyBlog.Models.Siniflar.Admin
+@{
+    ViewBag.Title = "AdminEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<p style="margin-top:-20px;"><a href="/Yonet/Index/">Admin</a> / Admin Ekle</p>
+<form class="form-group" method="post">
+    
+    @Html.LabelFor(x => x.Kullanici)
+    @Html.TextBoxFor(x => x.Kullanici, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Sifre)
+    @Html.TextBoxFor(x => x.Sifre, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">Ekle</button>
+</form>
+

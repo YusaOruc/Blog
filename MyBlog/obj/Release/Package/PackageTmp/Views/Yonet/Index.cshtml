@@ -1,0 +1,42 @@
+﻿@using MyBlog.Models.Siniflar
+@model List<Admin>
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h4 style="margin-top:-20px;">Admin</h4>
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <td>ID</td>
+            <td>KUllanıcı Adı</td>
+            <td>Şifre</td>
+
+            <td>Sil</td>
+            <td>Güncelle</td>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>@i.ID</td>
+                <td>@i.Kullanici</td>
+                <td>@i.Sifre</td>
+
+                <td><a href="/Yonet/AdminSil/@i.ID" class="btn btn-danger">SİL</a></td>
+                <td><a href="/Yonet/AdminGetir/@i.ID" class="btn btn-warning">Güncelle</a></td>
+
+            </tr>
+
+        }
+
+
+
+    </tbody>
+</table>
+<td><a href="/Yonet/AdminEkle/" class="btn btn-primary">EKLE</a></td>
+
+
